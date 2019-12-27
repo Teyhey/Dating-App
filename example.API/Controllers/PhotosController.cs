@@ -42,11 +42,12 @@ namespace example.API.Controllers
         }
 
         [HttpGet("{id}", Name = "GetPhoto")]
-        public async Task<IActionResult> GetPhoto(int id){
+        public async Task<IActionResult> GetPhoto(int id)
+        {
             var photoFromRepo = await _repo.GetPhoto(id);
-            var photo = _mapper.Map<PhotoForReturnDto>(photoFromRepo);    
+            var photo = _mapper.Map<PhotoForReturnDto>(photoFromRepo);
             return Ok(photo);
-            }
+        }
 
         [HttpPost]
         public async Task<IActionResult> AddPhotoForUser(int userId,
@@ -86,17 +87,51 @@ namespace example.API.Controllers
             {
                 photo.IsMain = true;
             }
-            
+
             userFromRepo.Photos.Add(photo);
 
             if (await _repo.SaveAll())
             {
                 var photoToReturn = _mapper.Map<PhotoForReturnDto>(photo);
-                return CreatedAtRoute("GetPhoto", new {userId = userId, id = photo.Id}, photoToReturn);
+                return CreatedAtRoute("GetPhoto", new { userId = userId, id = photo.Id }, photoToReturn);
             }
 
             return BadRequest("Could not add the photo");
         }
+
+        [HttpPost("{id}/setMain")]
+        public async Task<IActionResult> setMainPhoto(int userId, int id)
+        {
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            {
+                return Unauthorized();
+            }
+
+            var user = await _repo.GetUser(userId);
+
+            if (!user.Photos.Any(p => p.Id == id))
+            {
+                return Unauthorized();
+            }
+
+            var photoFromRepo = await _repo.GetPhoto(id);
+            if (photoFromRepo.IsMain)
+            {
+                return BadRequest("This is already the main photo!");
+            }
+
+            var currentMainPhoto = await _repo.GetMainPhotoForUser(userId);
+            currentMainPhoto.IsMain = false;
+
+            photoFromRepo.IsMain = true;
+
+            if (await _repo.SaveAll())
+            {
+                return NoContent();
+            }
+            return BadRequest("Could not set photo to main.");
+        }
+
 
     }
 }

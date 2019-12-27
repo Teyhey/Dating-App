@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/jtejeda/Google Drive/Macbook Documents/UDEMY/Angular/Projects/example.API/example.API.csproj": {}
+    "/Users/jtejeda/Google Drive/Macbook Documents/UDEMY/Angular/Projects/Dating-App/example.API/example.API.csproj": {}
   },
   "projects": {
-    "/Users/jtejeda/Google Drive/Macbook Documents/UDEMY/Angular/Projects/example.API/example.API.csproj": {
+    "/Users/jtejeda/Google Drive/Macbook Documents/UDEMY/Angular/Projects/Dating-App/example.API/example.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/jtejeda/Google Drive/Macbook Documents/UDEMY/Angular/Projects/example.API/example.API.csproj",
+        "projectUniqueName": "/Users/jtejeda/Google Drive/Macbook Documents/UDEMY/Angular/Projects/Dating-App/example.API/example.API.csproj",
         "projectName": "example.API",
-        "projectPath": "/Users/jtejeda/Google Drive/Macbook Documents/UDEMY/Angular/Projects/example.API/example.API.csproj",
+        "projectPath": "/Users/jtejeda/Google Drive/Macbook Documents/UDEMY/Angular/Projects/Dating-App/example.API/example.API.csproj",
         "packagesPath": "/Users/jtejeda/.nuget/packages/",
-        "outputPath": "/Users/jtejeda/Google Drive/Macbook Documents/UDEMY/Angular/Projects/example.API/obj/",
+        "outputPath": "/Users/jtejeda/Google Drive/Macbook Documents/UDEMY/Angular/Projects/Dating-App/example.API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/jtejeda/.nuget/NuGet/NuGet.Config"
